@@ -4,7 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import numberNormalize from "../../util/numberNormalize.js";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/operations";
+import { addContact } from "../../redux/contacts/operations";
 
 const ContactsSchema = Yup.object().shape({
   name: Yup.string()

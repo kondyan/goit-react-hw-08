@@ -2,7 +2,7 @@ import css from "./App.module.css";
 import ContactForm from "../ContactForm/ContactForm.jsx";
 import ContactList from "../ContactList/ContactList.jsx";
 import SearchBox from "../SearchBox/SearchBox.jsx";
-import { fetchContacts } from "../../redux/operations";
+import { fetchContacts } from "../../redux/contacts/operations";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 
