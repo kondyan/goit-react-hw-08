@@ -19,7 +19,6 @@ const authPersistConfig = {
   storage,
   whitelist: ["token"],
 };
-// what is persistor and how tf does this config work
 export const store = configureStore({
   reducer: {
     contacts: contactsReducer,
@@ -32,7 +31,8 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
-  devTools: process.env.NODE_ENV === "development",
 });
 
+store.subscribe(() => console.log("Updated state:", store.getState()));
 export const persistor = persistStore(store);
+persistor.persist();

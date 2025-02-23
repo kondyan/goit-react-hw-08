@@ -5,6 +5,8 @@ import SearchBox from "../../components/SearchBox/SearchBox";
 import { useEffect } from "react";
 import { fetchContacts } from "../../redux/contacts/operations";
 import { selectUser } from "../../redux/auth/selectors";
+import { selectLoading } from "../../redux/contacts/selectors";
+import DocumentTitle from "../../components/DocumentTitle";
 
 const ContactsPage = () => {
   const dispatch = useDispatch();

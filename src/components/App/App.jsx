@@ -4,7 +4,7 @@ import { selectIsRefreshing } from "../../redux/auth/selectors";
 import { refreshUser } from "../../redux/auth/operations";
 import { Routes, Route } from "react-router";
 import Layout from "../Layout";
-import RestrictedRoute from "../PrivateRoute";
+import RestrictedRoute from "../RestrictedRoute";
 import PrivateRoute from "../PrivateRoute";
 
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
@@ -27,9 +27,9 @@ const App = () => {
   return isRefreshing ? (
     <b>Refreshing User...</b>
   ) : (
-    <Layout>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
         <Route
           path="/register"
           element={
@@ -51,8 +51,8 @@ const App = () => {
             <PrivateRoute redirectTo="/login" component={<ContactsPage />} />
           }
         />
-      </Routes>
-    </Layout>
+      </Route>
+    </Routes>
   );
 };
 

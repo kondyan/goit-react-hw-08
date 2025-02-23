@@ -1,7 +1,7 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
-axios.defaults.baseURL = "https://connections-api.goit.global/";
+axios.defaults.baseURL = import.meta.env.VITE_API_URL;
 
 const setAuthHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -56,15 +56,16 @@ export const refreshUser = createAsyncThunk(
   async (_, thunkAPI) => {
     const state = thunkAPI.getState();
     const persistedToken = state.auth.token;
-    // how does this work ??, cant i just delete the state variable??????
 
     if (persistedToken === null) {
-      console.log("no persisted token");
       return thunkAPI.rejectWithValue("Unable to refresh User");
     }
     try {
+      //
+      console.log(persistedToken);
+      //
       setAuthHeader(persistedToken);
-      const response = await axios.get("/users/me");
+      const response = await axios.get("/users/current");
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
