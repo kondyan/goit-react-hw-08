@@ -4,10 +4,12 @@ import ContactList from "../../components/ContactList/ContactList";
 import SearchBox from "../../components/SearchBox/SearchBox";
 import { useEffect } from "react";
 import { fetchContacts } from "../../redux/contacts/operations";
+import { selectUser } from "../../redux/auth/selectors";
 
 const ContactsPage = () => {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectLoading);
+  const user = useSelector(selectUser);
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -15,7 +17,7 @@ const ContactsPage = () => {
 
   return (
     <div>
-      {/* <h1 className={css.title}>Phonebook</h1> */}
+      <DocumentTitle>{`${user}'s Contacts`}</DocumentTitle>
       <ContactForm />
       <SearchBox />
       <div>{isLoading && "Request in progress..."}</div>
