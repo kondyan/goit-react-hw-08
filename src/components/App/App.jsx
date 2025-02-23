@@ -1,28 +1,32 @@
-import css from "./App.module.css";
-import ContactForm from "../ContactForm/ContactForm.jsx";
-import ContactList from "../ContactList/ContactList.jsx";
-import SearchBox from "../SearchBox/SearchBox.jsx";
-import { fetchContacts } from "../../redux/contacts/operations";
-import { useDispatch } from "react-redux";
+
+
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { selectIsRefreshing } from "../../redux/auth/selectors";
+import { refreshUser } from "../../redux/auth/operations";
+
+const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
+const RegisterPage = lazy(() =>
+  import("../../pages/RegisterPage/RegisterPage")
+);
+const LoginPage = lazy(() => import("../../pages/LoginPage/LoginPage"));
+const ContactsPage = lazy(() =>
+  import("../../pages/ContactsPage/ContactsPage")
+);
 
 const App = () => {
-  const dispatch = useDispatch();
-  // const isLoading = useSelector(selectIsLoading);
-  // const error = useSelector(selectError);
+const dispatch = useDispatch();
+  const isRefreshing = useSelector(selectIsRefreshing)
+  
+
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
 
-  return (
-    <div>
-      <h1 className={css.title}>Phonebook</h1>
-      <ContactForm />
-      <SearchBox />
-      <ContactList />
-    </div>
-  );
+  return isRefreshing ? (
+   <b>Refreshing User...</b>
+  ): ();
 };
 
 export default App;
