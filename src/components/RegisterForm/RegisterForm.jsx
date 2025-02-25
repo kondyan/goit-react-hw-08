@@ -28,20 +28,44 @@ const RegisterForm = () => {
   };
 
   return (
-    <form className={css.LoginForm} onSubmit={handleSubmit} autoComplete="off">
-      <label className={css.label}>
-        Username
-        <input type="text" name="name" />
-      </label>
-      <label className={css.label}>
-        Email
-        <input type="email" name="email" />
-      </label>
-      <label className={css.label}>
-        Password
-        <input type="password" name="password" />
-      </label>
-      <button className={css.button} type="submit">
+    // <form
+    //   className={css.registerForm}
+    //   onSubmit={handleSubmit}
+    //   autoComplete="off"
+    // >
+    //   <label className={css.label}>
+    //     Username
+    //     <input type="text" name="name" />
+    //   </label>
+    //   <label className={css.label}>
+    //     Email
+    //     <input type="email" name="email" />
+    //   </label>
+    //   <label className={css.label}>
+    //     Password
+    //     <input type="password" name="password" />
+    //   </label>
+    //   <button className={css.button} type="submit">
+    //     Register
+    //   </button>
+    // </form>
+    <form
+      className={css.registerForm}
+      onSubmit={handleSubmit}
+      autoComplete="off"
+    >
+      <p className={css.formTitle}>Create a new Account</p>
+      <div className={css.inputContainer}>
+        <input type="text" name="name" placeholder="Enter nickname" />
+      </div>
+      <div className={css.inputContainer}>
+        <input type="email" name="email" placeholder="Enter email" />
+        <span />
+      </div>
+      <div className={css.inputContainer}>
+        <input type="password" name="password" placeholder="Enter password" />
+      </div>
+      <button className={css.submit} type="submit">
         Register
       </button>
     </form>

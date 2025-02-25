@@ -1,0 +1,16 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  border-bottom: 2px solid black;
+  margin-bottom: 30px;
+}
+
+.wrapper {
+  position: absolute;
+  top: 7px;
+  right: 30px;
+  bottom: 7px;
+  display: flex;
+}

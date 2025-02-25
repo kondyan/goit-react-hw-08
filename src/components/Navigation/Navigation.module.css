@@ -1,0 +1,21 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  font-size: 24px;
+  border-radius: 2px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  padding-left: 20px;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  border-radius: 5px;
+}
+
+.link:hover {
+  background-color: rgba(0, 123, 255, 0.1);
+}

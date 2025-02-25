@@ -19,10 +19,11 @@ const ContactsPage = () => {
 
   return (
     <div>
-      <DocumentTitle>{`${user}'s Contacts`}</DocumentTitle>
+      <DocumentTitle>{`${user.name}'s Contacts`}</DocumentTitle>
       <ContactForm />
       <SearchBox />
       <div>{isLoading && "Request in progress..."}</div>
+
       <ContactList />
     </div>
   );
